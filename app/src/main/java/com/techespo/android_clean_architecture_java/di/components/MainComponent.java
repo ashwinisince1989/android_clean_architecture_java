@@ -15,7 +15,7 @@ public interface MainComponent {
 
     void inject(HomeActivity activity);
 
-    void inject(SplashActivity activity);
+    //void inject(SplashActivity activity);
 
     Context context();
 }

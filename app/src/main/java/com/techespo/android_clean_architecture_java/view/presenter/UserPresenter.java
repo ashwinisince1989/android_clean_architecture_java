@@ -15,7 +15,7 @@ public class UserPresenter extends Presenter<UserPresenter.View> {
 
     private final GetUser getUser;
     private final UserViewModelToUserMapper mapper;
-    private String teamFlag;
+    private String userId;
 
     @Inject
     public UserPresenter(@NonNull GetUser getUserById,
@@ -27,7 +27,7 @@ public class UserPresenter extends Presenter<UserPresenter.View> {
     @SuppressWarnings("unchecked") @Override public void initialize() {
         super.initialize();
         getView().showLoading();
-        getUser.searchUserById(teamFlag);
+        getUser.searchUserById(userId);
         getUser.execute(new DisposableObserver<User>() {
             @Override public void onComplete() {
                 getView().hideLoading();
@@ -44,9 +44,6 @@ public class UserPresenter extends Presenter<UserPresenter.View> {
         });
     }
 
-    public void setUserId(String teamFlag) {
-        this.teamFlag = teamFlag;
-    }
 
     public void destroy() {
         this.getUser.dispose();

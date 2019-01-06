@@ -7,6 +7,7 @@ import com.techespo.android_clean_architecture_java.data.repository.datasource.U
 import com.techespo.android_clean_architecture_java.data.repository.datasource.mapper.UserToUserEntityMapper;
 import com.techespo.android_clean_architecture_java.domain.model.User;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
@@ -15,6 +16,7 @@ import io.reactivex.Observable;
     private final UserToUserEntityMapper userToUserEntityMapper;
     private final DataSource dataSource;
 
+    @Inject
     public UserRepository(@NonNull UserDataSourceFactory userDataSourceFactory,
                           @NonNull UserToUserEntityMapper userToUserEntityMapper) {
         this.userToUserEntityMapper = userToUserEntityMapper;
