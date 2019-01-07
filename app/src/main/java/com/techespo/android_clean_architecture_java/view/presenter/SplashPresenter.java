@@ -1,7 +1,19 @@
 package com.techespo.android_clean_architecture_java.view.presenter;
 
-public class SplashPresenter{/* extends Presenter<SplashPresenter.View> {
-    public interface View extends SplashPresenter.View {
+import javax.inject.Inject;
 
-    }*/
+public class SplashPresenter extends Presenter<SplashPresenter.View> {
+
+    @Inject
+    public SplashPresenter() {
+    }
+    public void destroy() {
+        setView(null);
+    }
+    public interface View extends Presenter.View {
+        void openDashboard();
+        void openOption();
+        void openTour();
+        void openLogin();
+    }
 }

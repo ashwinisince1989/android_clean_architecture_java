@@ -14,7 +14,7 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.activity.HomeActivity"
+            android:name=".view.activity.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.SplashActivity"></activity>
+        <activity android:name=".view.activity.HomeActivity"></activity>
     </application>
 
 </manifest>
