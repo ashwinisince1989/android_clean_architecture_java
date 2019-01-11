@@ -1,30 +1,43 @@
 package com.techespo.android_clean_architecture_java.data.repository;
 
-import android.support.annotation.NonNull;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 
-import com.techespo.android_clean_architecture_java.data.repository.datasource.DataSource;
-import com.techespo.android_clean_architecture_java.data.repository.datasource.UserDataSourceFactory;
-import com.techespo.android_clean_architecture_java.data.repository.datasource.mapper.UserToUserEntityMapper;
-import com.techespo.android_clean_architecture_java.domain.model.User;
+import com.techespo.android_clean_architecture_java.data.net.ApiServices;
+import com.techespo.android_clean_architecture_java.domain.model.UserSearchResult;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import io.reactivex.Observable;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 @Singleton public class UserRepository implements Repository {
-    private final UserToUserEntityMapper userToUserEntityMapper;
-    private final DataSource dataSource;
 
-    @Inject
-    public UserRepository(@NonNull UserDataSourceFactory userDataSourceFactory,
-                          @NonNull UserToUserEntityMapper userToUserEntityMapper) {
-        this.userToUserEntityMapper = userToUserEntityMapper;
-        this.dataSource = userDataSourceFactory.createDataSource();
+    /***********Android Architecture Component*********/
+    private final ApiServices apiServices;
+
+    public UserRepository(ApiServices apiServices) {
+        this.apiServices = apiServices;
     }
 
     @Override
-    public Observable<User> user(String id) {
-        return dataSource.userEntity(id).map(userToUserEntityMapper::reverseMap);
+    public LiveData<UserSearchResult> user(String userId){
+
+        final MutableLiveData<UserSearchResult> liveData = new MutableLiveData<>();
+        apiServices.getUser(userId).enqueue(new Callback<UserSearchResult>() {
+            @Override
+            public void onResponse(Call<UserSearchResult> call, Response<UserSearchResult> response) {
+                if(response.isSuccessful()){
+                    liveData.setValue(response.body());
+                }
+            }
+            @Override
+            public void onFailure(Call<UserSearchResult> call, Throwable t) {
+
+            }
+        });
+
+        return liveData;
     }
 }

@@ -2,33 +2,27 @@ package com.techespo.android_clean_architecture_java.view.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.techespo.android_clean_architecture_java.domain.model.User;
 import com.techespo.android_clean_architecture_java.domain.usecase.GetUser;
-import com.techespo.android_clean_architecture_java.view.viewmodel.UserViewModel;
-import com.techespo.android_clean_architecture_java.view.viewmodel.mapper.UserViewModelToUserMapper;
+import com.techespo.android_clean_architecture_java.view.viewmodel.UserProfileViewModel;
 
 import javax.inject.Inject;
-
-import io.reactivex.observers.DisposableObserver;
 
 public class UserPresenter extends Presenter<UserPresenter.View> {
 
     private final GetUser getUser;
-    private final UserViewModelToUserMapper mapper;
+    //private final UserViewModelToUserMapper mapper;
     private String userId;
 
     @Inject
-    public UserPresenter(@NonNull GetUser getUserById,
-                               @NonNull UserViewModelToUserMapper mapper) {
+    public UserPresenter(@NonNull GetUser getUserById) {
         this.getUser = getUserById;
-        this.mapper = mapper;
     }
 
     @SuppressWarnings("unchecked") @Override public void initialize() {
         super.initialize();
         getView().showLoading();
-        getUser.searchUserById(userId);
-        getUser.execute(new DisposableObserver<User>() {
+       /* getUser.searchUserById(userId);
+        getUser.execute(new DisposableObserver<UserSearchResult>() {
             @Override public void onComplete() {
                 getView().hideLoading();
             }
@@ -37,20 +31,20 @@ public class UserPresenter extends Presenter<UserPresenter.View> {
                 getView().hideLoading();
             }
 
-            @Override public void onNext(User user) {
-                UserViewModel userViewModel = mapper.reverseMap(user);
-                getView().showUser(userViewModel);
+            @Override public void onNext(UserSearchResult user) {
+                UserProfileViewModel userProfileViewModel = mapper.reverseMap(user);
+                getView().showUser(userProfileViewModel);
             }
-        });
+        });*/
     }
 
 
     public void destroy() {
-        this.getUser.dispose();
+        //this.getUser.dispose();
         setView(null);
     }
 
     public interface View extends Presenter.View {
-        void showUser(UserViewModel userViewModel);
+        void showUser(UserProfileViewModel userProfileViewModel);
     }
 }

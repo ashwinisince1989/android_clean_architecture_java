@@ -29,9 +29,11 @@ dependencies {
     implementation supportDependencies.design
     implementation supportDependencies.supportAnnotation
     implementation daggerDependencies.dagger
+    implementation 'com.android.support:support-v4:27.1.1'
     annotationProcessor daggerDependencies.daggerCompiler
     implementation rxDependencies.rxJava
     implementation rxDependencies.rxAndroid
+    implementation butterknife
     implementation butterknife
     annotationProcessor butterknifeProcessor
     implementation circleImageView
@@ -41,4 +43,11 @@ dependencies {
     testImplementation testingDependencies.mockito
     testImplementation testingDependencies.hamcrest
     testImplementation testingDependencies.robolectric
+    implementation 'android.arch.lifecycle:extensions:' + project.archLifecycleVersion;
+    annotationProcessor "android.arch.lifecycle:compiler:" + project.archLifecycleVersion;
+
+    //Network
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp:okhttp:2.4.0'
 }

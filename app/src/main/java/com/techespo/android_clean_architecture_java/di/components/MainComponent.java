@@ -5,6 +5,7 @@ import android.content.Context;
 import com.techespo.android_clean_architecture_java.di.modules.MainModule;
 import com.techespo.android_clean_architecture_java.view.activity.HomeActivity;
 import com.techespo.android_clean_architecture_java.view.activity.SplashActivity;
+import com.techespo.android_clean_architecture_java.view.fragment.UserProfileFragment;
 
 import javax.inject.Singleton;
 
@@ -16,6 +17,8 @@ public interface MainComponent {
     void inject(HomeActivity activity);
 
     void inject(SplashActivity activity);
+
+    void inject(UserProfileFragment fragment);
 
     Context context();
 }

@@ -2,17 +2,15 @@ package com.techespo.android_clean_architecture_java.domain.model;
 
 public class User {
 
-    private int id;
+    private String avatarUrl;
     private String name;
-    private String mobile;
-    private String email;
 
-    public int getId() {
-        return id;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public String getName() {
@@ -22,30 +20,4 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    private String address;
 }

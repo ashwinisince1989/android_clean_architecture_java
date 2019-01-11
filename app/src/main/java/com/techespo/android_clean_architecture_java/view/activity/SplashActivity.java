@@ -1,18 +1,10 @@
 package com.techespo.android_clean_architecture_java.view.activity;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.view.MenuItem;
-
 import com.techespo.android_clean_architecture_java.App;
 import com.techespo.android_clean_architecture_java.R;
 import com.techespo.android_clean_architecture_java.view.base.view.BaseActivity;
+import com.techespo.android_clean_architecture_java.view.fragment.UserProfileFragment;
 import com.techespo.android_clean_architecture_java.view.presenter.SplashPresenter;
-import com.techespo.android_clean_architecture_java.view.presenter.UserPresenter;
-import com.techespo.android_clean_architecture_java.view.viewmodel.UserViewModel;
 
 import javax.inject.Inject;
 
@@ -27,6 +19,10 @@ public class SplashActivity extends BaseActivity implements SplashPresenter.View
         //disableTitleFromToolbar();
         //initializeToolbar();
         presenter.initialize();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, UserProfileFragment.newInstance())
+                .commit();
     }
     @Override protected int getLayoutId() {
         return R.layout.activity_splash;

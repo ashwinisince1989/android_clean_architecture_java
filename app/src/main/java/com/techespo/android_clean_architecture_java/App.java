@@ -9,7 +9,6 @@ import com.techespo.android_clean_architecture_java.di.modules.MainModule;
 public class App extends Application{
 
     private MainComponent mainComponent;
-
     @Override
     public void onCreate() {
         super.onCreate();

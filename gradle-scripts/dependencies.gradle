@@ -1,5 +1,7 @@
 ext {
 
+  archLifecycleVersion = "1.0.0"
+
   //Version
   supportVersion = '27.1.1'
 

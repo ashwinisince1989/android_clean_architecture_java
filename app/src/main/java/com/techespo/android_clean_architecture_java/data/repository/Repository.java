@@ -1,10 +1,10 @@
 package com.techespo.android_clean_architecture_java.data.repository;
 
-import com.techespo.android_clean_architecture_java.domain.model.User;
+import android.arch.lifecycle.LiveData;
 
-import io.reactivex.Observable;
+import com.techespo.android_clean_architecture_java.domain.model.UserSearchResult;
 
 public interface Repository {
 
-    Observable<User> user(final String id);
+    LiveData<UserSearchResult> user(final String id);
 }

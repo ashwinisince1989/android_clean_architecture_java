@@ -1,7 +1,9 @@
 package com.techespo.android_clean_architecture_java.domain.usecase;
 
+import android.arch.lifecycle.LiveData;
+
 import com.techespo.android_clean_architecture_java.data.repository.Repository;
-import com.techespo.android_clean_architecture_java.domain.model.User;
+import com.techespo.android_clean_architecture_java.domain.model.UserSearchResult;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -9,9 +11,9 @@ import javax.inject.Named;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 
-public class GetUser extends UseCase<User> {
+public class GetUser {//extends UseCase<UserSearchResult> {
 
-    private final Repository repository;
+   /* private final Repository repository;
     private String id = "";
 
     @Inject
@@ -24,8 +26,8 @@ public class GetUser extends UseCase<User> {
     public void searchUserById(String id) {
         this.id = id;
     }
-
-    @Override public Observable<User> createObservableUseCase() {
+*/
+    /*@Override public LiveData<UserSearchResult> createObservableUseCase() {
         return this.repository.user(id);
-    }
+    }*/
 }
